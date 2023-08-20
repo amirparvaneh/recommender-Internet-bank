@@ -6,7 +6,7 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-./idea
+
 /.idea/workspace.xml
 .mvn
 mvnw.cmd
@@ -14,3 +14,4 @@ mvnw
 newsapp.iml
 
 HELP.md
+/.idea/
