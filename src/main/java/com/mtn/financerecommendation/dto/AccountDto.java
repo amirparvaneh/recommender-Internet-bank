@@ -6,6 +6,4 @@ import java.io.Serializable;
 
 @Data
 public class AccountDto implements Serializable {
-
-    private
 }

@@ -8,5 +8,6 @@ import java.io.Serializable;
 public class ClientDto implements Serializable {
 
     private String name;
-    private
+    private Double amount;
+    private Double interestRate;
 }

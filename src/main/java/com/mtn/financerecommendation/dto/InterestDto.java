@@ -6,4 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class InterestDto implements Serializable {
+
+    private String name;
+    private Double interestRate;
 }
