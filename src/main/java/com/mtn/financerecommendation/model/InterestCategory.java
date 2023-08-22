@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 public class InterestCategory extends BaseEntity {
+
     private String name;
     private double interestRate;
 }
