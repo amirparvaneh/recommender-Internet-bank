@@ -4,6 +4,9 @@ import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.repository.ClientRepo;
 import com.mtn.financerecommendation.service.ClientService;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
+
+import java.util.Optional;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -26,7 +29,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client find(Long id) {
-        return null;
+    public Client find(Long clientId) {
+        try{
+
+        }catch (NotFoundException e){
+            throw new NotFoundException(e.getMessage());
+        }
+        Optional<Client> client = clientRepo.findById(clientId);
+        return client.get();
     }
 }

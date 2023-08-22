@@ -24,4 +24,5 @@ public class Recommendation extends BaseEntity {
     private Account currentAccount;
 
     private double recommendedInterest;
+
 }
