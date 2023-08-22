@@ -1,5 +1,7 @@
 package com.mtn.financerecommendation.service;
 
 
-public interface AccountService {
+import com.mtn.financerecommendation.model.Account;
+
+public interface AccountService extends BaseService<Account>{
 }

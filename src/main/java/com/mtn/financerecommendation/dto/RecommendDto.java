@@ -6,4 +6,5 @@ import java.io.Serializable;
 
 @Data
 public class RecommendDto implements Serializable {
+
 }

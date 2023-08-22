@@ -19,8 +19,8 @@ public class Account extends BaseEntity {
     private String name;
     private double balance;
 
-    @ManyToOne
-    @JoinColumn(name = "")
+    @OneToOne
+    @JoinColumn(name = "interest-category-id")
     private InterestCategory interestCategory;
 
     @OneToOne(mappedBy = "account")

@@ -1,4 +1,6 @@
 package com.mtn.financerecommendation.service;
 
-public interface RecommendService {
+import com.mtn.financerecommendation.model.Recommendation;
+
+public interface RecommendService extends BaseService<Recommendation>{
 }

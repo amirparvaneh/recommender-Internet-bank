@@ -1,5 +1,7 @@
 package com.mtn.financerecommendation.service;
 
 
-public interface InterestService {
+import com.mtn.financerecommendation.model.InterestCategory;
+
+public interface InterestService extends BaseService<InterestCategory>{
 }
