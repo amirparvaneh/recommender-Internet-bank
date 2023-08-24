@@ -2,7 +2,7 @@ package com.mtn.financerecommendation.controller;
 
 
 import com.mtn.financerecommendation.ApiVersion;
-import com.mtn.financerecommendation.dto.InterestDto;
+import com.mtn.financerecommendation.dto.InterestRequestDto;
 import com.mtn.financerecommendation.model.InterestCategory;
 import com.mtn.financerecommendation.service.impl.InterestServiceImpl;
 import org.modelmapper.ModelMapper;
@@ -24,8 +24,8 @@ public class InterestCategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createInterestCategory(@RequestBody InterestDto interestDto){
-        InterestCategory interestCategory = modelMapper.map(interestDto,InterestCategory.class);
+    public ResponseEntity<String> createInterestCategory(@RequestBody InterestRequestDto interestRequestDto){
+        InterestCategory interestCategory = modelMapper.map(interestRequestDto,InterestCategory.class);
         interestService.save(interestCategory);
         return ResponseEntity.ok("interest created.");
     }

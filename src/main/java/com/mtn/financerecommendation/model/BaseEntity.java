@@ -1,19 +1,30 @@
 package com.mtn.financerecommendation.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @MappedSuperclass
 @Data
-public class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id ;
+
+    @Temporal(TIMESTAMP)
+    @Column(name = "created_at",nullable = false,updatable = false)
+    @CreatedDate
+    private Date createAt;
+
+    @Temporal(TIMESTAMP)
+    @Column(name = "update_at",nullable = false)
+    private Date updateAt;
+
+    @Version
+    @Column
+    private Integer version;
 
 }

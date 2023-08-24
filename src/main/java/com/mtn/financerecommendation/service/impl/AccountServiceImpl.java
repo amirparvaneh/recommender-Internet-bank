@@ -1,12 +1,12 @@
 package com.mtn.financerecommendation.service.impl;
 
 
-import com.mtn.financerecommendation.dto.AccountDto;
+import com.mtn.financerecommendation.dto.AccountRequestDto;
+import com.mtn.financerecommendation.exception.EntityNotFoundException;
 import com.mtn.financerecommendation.model.Account;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.repository.AccountRepo;
 import com.mtn.financerecommendation.service.AccountService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
@@ -25,11 +25,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account addClientAccount(AccountDto accountDto) {
-        Client client = clientService.find(accountDto.getClientId());
+    public Account addClientAccount(AccountRequestDto accountRequestDto) {
+        Client client = clientService.find(accountRequestDto.getClientId());
         Account account = Account.builder()
                 .client(client)
-                .balance(accountDto.getAmount())
+                .balance(accountRequestDto.getAmount())
                 .build();
         accountRepo.save(account);
         return account;
@@ -50,8 +50,8 @@ public class AccountServiceImpl implements AccountService {
         try{
             Optional<Account> account = accountRepo.findById(id);
             return account.get();
-        }catch (NotFoundException e){
-            throw new NotFoundException(e.getMessage());
+        }catch (EntityNotFoundException e){
+            throw new EntityNotFoundException(e.getMessage());
         }
     }
 }

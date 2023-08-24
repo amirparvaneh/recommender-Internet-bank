@@ -2,11 +2,8 @@ package com.mtn.financerecommendation.controller;
 
 
 import com.mtn.financerecommendation.ApiVersion;
-import com.mtn.financerecommendation.dto.AccountDto;
-import com.mtn.financerecommendation.dto.ClientDto;
-import com.mtn.financerecommendation.model.Account;
+import com.mtn.financerecommendation.dto.ClientRequestDto;
 import com.mtn.financerecommendation.model.Client;
-import com.mtn.financerecommendation.service.impl.AccountServiceImpl;
 import com.mtn.financerecommendation.service.impl.ClientServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +23,8 @@ public class ClientController {
 
 
     @PostMapping
-    public ResponseEntity<String> createClient(@RequestBody ClientDto clientDto) {
-        Client client = modelMapper.map(clientDto, Client.class);
+    public ResponseEntity<String> createClient(@RequestBody ClientRequestDto clientRequestDto) {
+        Client client = modelMapper.map(clientRequestDto, Client.class);
         clientService.save(client);
         return ResponseEntity.ok("the client saved");
     }

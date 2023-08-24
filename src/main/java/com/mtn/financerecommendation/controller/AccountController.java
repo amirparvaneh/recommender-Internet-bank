@@ -1,7 +1,7 @@
 package com.mtn.financerecommendation.controller;
 
 import com.mtn.financerecommendation.ApiVersion;
-import com.mtn.financerecommendation.dto.AccountDto;
+import com.mtn.financerecommendation.dto.AccountRequestDto;
 import com.mtn.financerecommendation.model.Account;
 import com.mtn.financerecommendation.service.impl.AccountServiceImpl;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +24,8 @@ public class AccountController {
     }
 
     @PostMapping(value = "/assignClient")
-    public ResponseEntity<?> createClientAccount(@RequestBody @Validated AccountDto accountDto, BindingResult bindingResult){
-        Account account = accountService.addClientAccount(accountDto);
+    public ResponseEntity<?> createClientAccount(@RequestBody @Validated AccountRequestDto accountRequestDto, BindingResult bindingResult){
+        Account account = accountService.addClientAccount(accountRequestDto);
         if(bindingResult.hasErrors()){
             return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
         }
