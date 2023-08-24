@@ -23,10 +23,8 @@ public class Account extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name = "interest_id")
-    @NotNull
     private InterestCategory interestCategory;
 
-    @NotNull
     @OneToOne(mappedBy = "account")
     private Client client;
 }

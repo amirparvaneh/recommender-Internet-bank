@@ -1,5 +1,7 @@
 package com.mtn.financerecommendation.service.impl;
 
+import com.mtn.financerecommendation.constants.ErrorMessage;
+import com.mtn.financerecommendation.exception.EntityNotFoundException;
 import com.mtn.financerecommendation.model.InterestCategory;
 import com.mtn.financerecommendation.repository.InterestRepo;
 import com.mtn.financerecommendation.service.InterestService;
@@ -14,7 +16,7 @@ public class InterestServiceImpl implements InterestService {
 
     private final InterestRepo interestRepo;
 
-    public InterestServiceImpl(InterestRepo interestRepo){
+    public InterestServiceImpl(InterestRepo interestRepo) {
         this.interestRepo = interestRepo;
     }
 
@@ -30,15 +32,13 @@ public class InterestServiceImpl implements InterestService {
 
     @Override
     public void delete(InterestCategory interestCategory) {
-        interestRepo.delete(interestCategory);;
+        interestRepo.delete(interestCategory);
     }
 
     @Override
-    public InterestCategory find(Long id) {
-        Optional<InterestCategory> interestCategory = interestRepo.findById(id);
-        if (interestCategory.isEmpty()){
-
-        }
+    public InterestCategory find(Long interestId) {
+        return interestRepo.findById(interestId).orElseThrow(() ->
+                new EntityNotFoundException(ErrorMessage.Error_For_Interest_Not_Found + interestId));
     }
 
 

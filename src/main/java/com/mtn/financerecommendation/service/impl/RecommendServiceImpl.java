@@ -10,9 +10,12 @@ public class RecommendServiceImpl implements RecommendService {
 
     private final RecommendRepo recommendRepo;
 
-    public RecommendServiceImpl(RecommendRepo recommendRepo){
+    public RecommendServiceImpl(RecommendRepo recommendRepo) {
         this.recommendRepo = recommendRepo;
     }
+
+
+
 
     @Override
     public void save(Recommendation recommendation) {
