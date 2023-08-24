@@ -5,6 +5,9 @@ import com.mtn.financerecommendation.repository.InterestRepo;
 import com.mtn.financerecommendation.service.InterestService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 public class InterestServiceImpl implements InterestService {
@@ -16,17 +19,27 @@ public class InterestServiceImpl implements InterestService {
     }
 
     @Override
-    public void save(InterestCategory interestCategory) {
+    public List<InterestCategory> findAll() {
+        return interestRepo.findAll();
+    }
 
+    @Override
+    public void save(InterestCategory interestCategory) {
+        interestRepo.save(interestCategory);
     }
 
     @Override
     public void delete(InterestCategory interestCategory) {
-
+        interestRepo.delete(interestCategory);;
     }
 
     @Override
     public InterestCategory find(Long id) {
-        return null;
+        Optional<InterestCategory> interestCategory = interestRepo.findById(id);
+        if (interestCategory.isEmpty()){
+
+        }
     }
+
+
 }

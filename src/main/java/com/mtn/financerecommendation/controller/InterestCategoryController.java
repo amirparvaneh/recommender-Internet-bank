@@ -7,10 +7,9 @@ import com.mtn.financerecommendation.model.InterestCategory;
 import com.mtn.financerecommendation.service.impl.InterestServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = ApiVersion.VERSION_1 + "/interest")
@@ -31,4 +30,9 @@ public class InterestCategoryController {
         return ResponseEntity.ok("interest created.");
     }
 
+    @GetMapping(value = "/all")
+    public ResponseEntity<List<InterestCategory>> getAllInterestRate(){
+        List<InterestCategory> interestCategories = interestService.findAll();
+        return ResponseEntity.ok(interestCategories);
+    }
 }
