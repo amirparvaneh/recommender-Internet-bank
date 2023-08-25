@@ -22,7 +22,7 @@ public abstract class BaseEntity implements Serializable {
     private Date createdAt;
 
     @Temporal(TIMESTAMP)
-    @Column(name = "update_at",nullable = false)
+    @Column(name = "updated_at",nullable = false)
     private Date updatedAt;
 
     @Version

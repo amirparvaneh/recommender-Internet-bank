@@ -17,19 +17,18 @@ import java.util.List;
 public class ClientController {
 
     private final ClientServiceImpl clientService;
-    private final ModelMapper mapper;
+    private final ModelMapper modelMapper;
 
-
-    public ClientController(ClientServiceImpl clientService, ModelMapper mapper) {
+    public ClientController(ClientServiceImpl clientService, ModelMapper modelMapper) {
         this.clientService = clientService;
-        this.mapper = mapper;
+        this.modelMapper = modelMapper;
     }
 
 
     @PostMapping
     public ResponseEntity<String> createClient(@RequestBody ClientRequestDto clientRequestDto) {
         //Client client = ClientMapper.INSTANCE.clientReqDtoToClient(clientRequestDto);
-        Client client = mapper.map(clientRequestDto, Client.class);
+        Client client = modelMapper.map(clientRequestDto, Client.class);
         clientService.save(client);
         return ResponseEntity.status(HttpStatus.CREATED).body("client created");
     }

@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class InterestCategory extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "interest_id")
     private Long interestId;
     private String name;

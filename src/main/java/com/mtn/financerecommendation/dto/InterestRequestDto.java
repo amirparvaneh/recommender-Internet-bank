@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +22,6 @@ public class InterestRequestDto implements Serializable {
     @NotNull(message = ErrorMessage.Error_For_Interest_Rate_Should_Fill)
     @DecimalMin(value = BankingValue.rate_risk)
     private Double interestRate;
+    private Date createdAt;
+    private Date updatedAt;
 }
