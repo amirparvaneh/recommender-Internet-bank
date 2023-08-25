@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "client")
 @Data
 @AllArgsConstructor
 @Builder
@@ -15,9 +16,10 @@ import lombok.NoArgsConstructor;
 public class Client extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "client_id")
     private Long clientId;
+    @Column(name = "user_name")
     private String username;
 
     @OneToOne

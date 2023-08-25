@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,25 +17,25 @@ import java.util.List;
 public class ClientController {
 
     private final ClientServiceImpl clientService;
-    private final ModelMapper modelMapper;
+    private final ModelMapper mapper;
 
-    public ClientController(ClientServiceImpl clientService, ModelMapper modelMapper) {
+
+    public ClientController(ClientServiceImpl clientService, ModelMapper mapper) {
         this.clientService = clientService;
-        this.modelMapper = modelMapper;
+        this.mapper = mapper;
     }
 
 
     @PostMapping
     public ResponseEntity<String> createClient(@RequestBody ClientRequestDto clientRequestDto) {
-//        Date currentDate = new Date();
-//        clientRequestDto.setCreateAt(currentDate);
-        Client client = modelMapper.map(clientRequestDto, Client.class);
+        //Client client = ClientMapper.INSTANCE.clientReqDtoToClient(clientRequestDto);
+        Client client = mapper.map(clientRequestDto, Client.class);
         clientService.save(client);
         return ResponseEntity.status(HttpStatus.CREATED).body("client created");
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Client>> getAllClient(){
+    public ResponseEntity<List<Client>> getAllClient() {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(clientService.getAllClient());
     }
 
