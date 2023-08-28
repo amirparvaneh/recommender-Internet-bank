@@ -9,13 +9,17 @@ import org.springframework.stereotype.Service;
 public class RecommendServiceImpl implements RecommendService {
 
     private final RecommendRepo recommendRepo;
+    private final CalculationService calculationService;
 
-    public RecommendServiceImpl(RecommendRepo recommendRepo) {
+    public RecommendServiceImpl(RecommendRepo recommendRepo,CalculationService calculationService) {
         this.recommendRepo = recommendRepo;
+        this.calculationService = calculationService;
     }
 
-
-
+    @Override
+    public Double currentAccountIncome(Long accountId) {
+        return calculationService.accountIncomePerUser(accountId);
+    }
 
     @Override
     public void save(Recommendation recommendation) {
@@ -31,4 +35,6 @@ public class RecommendServiceImpl implements RecommendService {
     public Recommendation find(Long id) {
         return null;
     }
+
+
 }

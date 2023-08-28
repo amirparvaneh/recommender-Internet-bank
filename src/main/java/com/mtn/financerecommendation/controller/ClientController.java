@@ -27,7 +27,6 @@ public class ClientController {
 
     @PostMapping
     public ResponseEntity<String> createClient(@RequestBody ClientRequestDto clientRequestDto) {
-        //Client client = ClientMapper.INSTANCE.clientReqDtoToClient(clientRequestDto);
         Client client = modelMapper.map(clientRequestDto, Client.class);
         clientService.save(client);
         return ResponseEntity.status(HttpStatus.CREATED).body("client created");
