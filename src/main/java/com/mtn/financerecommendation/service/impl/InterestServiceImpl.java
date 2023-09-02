@@ -5,20 +5,18 @@ import com.mtn.financerecommendation.exception.EntityNotFoundException;
 import com.mtn.financerecommendation.model.InterestCategory;
 import com.mtn.financerecommendation.repository.InterestRepo;
 import com.mtn.financerecommendation.service.InterestService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 
 @Service
+@RequiredArgsConstructor
 public class InterestServiceImpl implements InterestService {
 
     private final InterestRepo interestRepo;
-
-    public InterestServiceImpl(InterestRepo interestRepo) {
-        this.interestRepo = interestRepo;
-    }
 
     @Override
     public List<InterestCategory> findAll() {

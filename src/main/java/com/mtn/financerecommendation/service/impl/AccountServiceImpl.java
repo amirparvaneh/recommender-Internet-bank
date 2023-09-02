@@ -7,6 +7,7 @@ import com.mtn.financerecommendation.model.Account;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.repository.AccountRepo;
 import com.mtn.financerecommendation.service.AccountService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
@@ -14,15 +15,11 @@ import java.util.Optional;
 
 
 @Service
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepo accountRepo;
     private final ClientServiceImpl clientService;
-
-    public AccountServiceImpl(AccountRepo accountRepo, ClientServiceImpl clientService){
-        this.accountRepo = accountRepo;
-        this.clientService = clientService;
-    }
 
     @Override
     public Account addClientAccount(AccountRequestDto accountRequestDto) {

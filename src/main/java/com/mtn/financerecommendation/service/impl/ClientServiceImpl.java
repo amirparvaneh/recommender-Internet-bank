@@ -5,20 +5,17 @@ import com.mtn.financerecommendation.exception.EntityNotFoundException;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.repository.ClientRepo;
 import com.mtn.financerecommendation.service.ClientService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
+@RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepo clientRepo;
-
-    public ClientServiceImpl(ClientRepo clientRepo) {
-        this.clientRepo = clientRepo;
-    }
 
     @Override
     public Client getClientByAccount(Long accountId) {

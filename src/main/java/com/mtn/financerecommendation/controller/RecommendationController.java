@@ -9,6 +9,7 @@ import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.service.impl.AccountServiceImpl;
 import com.mtn.financerecommendation.service.impl.ClientServiceImpl;
 import com.mtn.financerecommendation.service.impl.RecommendServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 @RestController
-@RequestMapping(value = ApiVersion.VERSION_1 + "/recommendation")
+@RequestMapping(value = ApiVersion.VERSION_1 + "/recommendations")
+@RequiredArgsConstructor
 public class RecommendationController {
 
     private final RecommendServiceImpl recommendService;
@@ -28,16 +30,8 @@ public class RecommendationController {
     private final ModelMapper modelMapper;
     private final AccountServiceImpl accountService;
 
-    public RecommendationController(RecommendServiceImpl recommendService, ClientServiceImpl clientService,
-                                    ModelMapper modelMapper,AccountServiceImpl accountService) {
-        this.recommendService = recommendService;
-        this.clientService = clientService;
-        this.modelMapper = modelMapper;
-        this.accountService = accountService;
-    }
 
-
-    @GetMapping(value = "/accountIncome")
+    @GetMapping(value = "/account-income")
     public ResponseEntity<RecommendationResponseDto> getCurrentAccountIncome(@RequestBody RecommendationRequestDto recommendationRequestDto) {
         Double income = null;
         Client client = clientService.find(recommendationRequestDto.getClientId());

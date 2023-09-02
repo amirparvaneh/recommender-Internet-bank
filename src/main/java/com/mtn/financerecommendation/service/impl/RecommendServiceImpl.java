@@ -3,18 +3,16 @@ package com.mtn.financerecommendation.service.impl;
 import com.mtn.financerecommendation.model.Recommendation;
 import com.mtn.financerecommendation.repository.RecommendRepo;
 import com.mtn.financerecommendation.service.RecommendService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class RecommendServiceImpl implements RecommendService {
 
     private final RecommendRepo recommendRepo;
     private final CalculationService calculationService;
 
-    public RecommendServiceImpl(RecommendRepo recommendRepo,CalculationService calculationService) {
-        this.recommendRepo = recommendRepo;
-        this.calculationService = calculationService;
-    }
 
     @Override
     public Double currentAccountIncome(Long accountId) {
