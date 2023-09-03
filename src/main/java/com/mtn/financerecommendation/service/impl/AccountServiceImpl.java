@@ -9,7 +9,6 @@ import com.mtn.financerecommendation.repository.AccountRepo;
 import com.mtn.financerecommendation.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.webjars.NotFoundException;
 
 import java.util.Optional;
 

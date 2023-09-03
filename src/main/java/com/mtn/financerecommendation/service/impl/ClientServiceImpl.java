@@ -1,11 +1,13 @@
 package com.mtn.financerecommendation.service.impl;
 
 import com.mtn.financerecommendation.constants.ErrorMessage;
+import com.mtn.financerecommendation.dto.ClientAllResponseDto;
 import com.mtn.financerecommendation.exception.EntityNotFoundException;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.repository.ClientRepo;
 import com.mtn.financerecommendation.service.ClientService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepo clientRepo;
+    private final ModelMapper mapper;
 
     @Override
     public Client getClientByAccount(Long accountId) {
@@ -23,8 +26,9 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public List<Client> getAllClient() {
-        return clientRepo.findAll();
+    public List<ClientAllResponseDto> getAllClient() {
+        List<Client> clients = clientRepo.findAll();
+        return clients.stream().map(client -> mapper.map(client,ClientAllResponseDto.class)).toList();
     }
 
     @Override

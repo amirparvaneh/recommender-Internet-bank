@@ -18,11 +18,11 @@ public class Recommendation extends BaseEntity {
     @Column(name = "recommendationId")
     private Long recommendationId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
     private Account currentAccount;
     private double recommendedInterest;

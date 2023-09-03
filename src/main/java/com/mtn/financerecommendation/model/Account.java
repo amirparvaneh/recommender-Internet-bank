@@ -17,13 +17,13 @@ public class Account extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id")
     private Long accountId;
+    @Column
     private String name;
+    @Column
     private double balance;
-
     @OneToOne
     @JoinColumn(name = "interest_id")
     private InterestCategory interestCategory;
-
     @OneToOne(mappedBy = "account")
     private Client client;
 }

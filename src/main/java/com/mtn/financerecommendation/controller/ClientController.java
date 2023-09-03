@@ -2,6 +2,9 @@ package com.mtn.financerecommendation.controller;
 
 
 import com.mtn.financerecommendation.ApiVersion;
+import com.mtn.financerecommendation.constants.Messages;
+import com.mtn.financerecommendation.dto.BaseResponseEntity;
+import com.mtn.financerecommendation.dto.ClientAllResponseDto;
 import com.mtn.financerecommendation.dto.ClientRequestDto;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.service.impl.ClientServiceImpl;
@@ -19,20 +22,35 @@ import java.util.List;
 public class ClientController {
 
     private final ClientServiceImpl clientService;
-    private final ModelMapper modelMapper;
-
+    private final ModelMapper mapper;
 
 
     @PostMapping
-    public ResponseEntity<String> createClient(@RequestBody ClientRequestDto clientRequestDto) {
-        Client client = modelMapper.map(clientRequestDto, Client.class);
+    public ResponseEntity<String> addNewClient(@RequestBody ClientRequestDto clientRequestDto) {
+        Client client = mapper.map(clientRequestDto, Client.class);
         clientService.save(client);
         return ResponseEntity.status(HttpStatus.CREATED).body("client created");
     }
 
     @GetMapping
-    public ResponseEntity<List<Client>> getAllClient() {
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(clientService.getAllClient());
+    public ResponseEntity<List<ClientAllResponseDto>> getAllClient() {
+        return ResponseEntity.ok().body(clientService.getAllClient());
+    }
+
+    @GetMapping(value = "/{clientId}")
+    public ResponseEntity<BaseResponseEntity<Object>> getClientById(@PathVariable Long clientId){
+        return ResponseEntity.ok().body(BaseResponseEntity.builder()
+                        .message(Messages.ITEM_SAVED_SUCCESSFUL + clientId)
+                        .result(clientService.find(clientId))
+                .build());
+    }
+
+    @DeleteMapping(value = "/{clientId}")
+    public ResponseEntity<BaseResponseEntity<Object>> deleteClientById(@PathVariable Long clientId) {
+        clientService.delete(clientService.find(clientId));
+        return ResponseEntity.ok().body(BaseResponseEntity.builder()
+                .message(Messages.ITEM_DELETED_COMPLETE)
+                .build());
     }
 
 }

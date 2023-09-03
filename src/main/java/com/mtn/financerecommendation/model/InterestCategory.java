@@ -20,7 +20,7 @@ public class InterestCategory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "interest_id")
+    @Column
     private Long interestId;
     private String name;
     @DecimalMin(value = BankingValue.rate_risk)
