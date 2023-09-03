@@ -10,7 +10,6 @@ import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.service.impl.ClientServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +25,12 @@ public class ClientController {
 
 
     @PostMapping
-    public ResponseEntity<String> addNewClient(@RequestBody ClientRequestDto clientRequestDto) {
+    public ResponseEntity<BaseResponseEntity<Object>> addNewClient(@RequestBody ClientRequestDto clientRequestDto) {
         Client client = mapper.map(clientRequestDto, Client.class);
         clientService.save(client);
-        return ResponseEntity.status(HttpStatus.CREATED).body("client created");
+        return ResponseEntity.ok().body(BaseResponseEntity.builder()
+                        .message(Messages.ITEM_SAVED_SUCCESSFUL)
+                .build());
     }
 
     @GetMapping
@@ -40,7 +41,6 @@ public class ClientController {
     @GetMapping(value = "/{clientId}")
     public ResponseEntity<BaseResponseEntity<Object>> getClientById(@PathVariable Long clientId){
         return ResponseEntity.ok().body(BaseResponseEntity.builder()
-                        .message(Messages.ITEM_SAVED_SUCCESSFUL + clientId)
                         .result(clientService.find(clientId))
                 .build());
     }

@@ -19,4 +19,5 @@ public class AccountRequestDto implements Serializable {
     private Long clientId;
     @DecimalMin(value = BankingValue.account_value,message = ErrorMessage.Error_For_Minimum_Balance_Account)
     private Double amount;
+    private Long interestCategoryId;
 }

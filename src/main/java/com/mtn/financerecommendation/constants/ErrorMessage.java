@@ -8,6 +8,6 @@ public class ErrorMessage {
     public static final String Error_for_client_id_to_assign_account = "to assign account to a client the client id is" +
             "mandatory";
     public static final String Error_for_create_client = "to create a client this field is mandatory";
-    public static final String Error_Not_Exist_Client = "there is no client with this id : ";
+    public static final String Error_Not_Exist_ITEM = "there is no item with this id : ";
     public static final String Positive_Value = "value should be positive!.";
 }
