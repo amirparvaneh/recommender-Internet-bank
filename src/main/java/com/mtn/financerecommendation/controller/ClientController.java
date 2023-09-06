@@ -38,7 +38,7 @@ public class ClientController {
         List<ClientAllResponseDto> allClient = clientService.getAllClient();
         return ResponseEntity.ok().body(BaseResponseEntity.
                 builder()
-                .result(allClient.stream().toList())
+                .result(allClient)
                 .build());
     }
 
