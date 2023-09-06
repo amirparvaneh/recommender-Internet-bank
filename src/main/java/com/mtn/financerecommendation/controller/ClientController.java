@@ -34,8 +34,12 @@ public class ClientController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ClientAllResponseDto>> getAllClient() {
-        return ResponseEntity.ok().body(clientService.getAllClient());
+    public ResponseEntity<BaseResponseEntity<Object>> getAllClient() {
+        List<ClientAllResponseDto> allClient = clientService.getAllClient();
+        return ResponseEntity.ok().body(BaseResponseEntity.
+                builder()
+                .result(allClient.stream().toList())
+                .build());
     }
 
     @GetMapping(value = "/{clientId}")
