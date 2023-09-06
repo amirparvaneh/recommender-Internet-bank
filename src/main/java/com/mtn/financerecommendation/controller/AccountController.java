@@ -2,8 +2,8 @@ package com.mtn.financerecommendation.controller;
 
 import com.mtn.financerecommendation.ApiVersion;
 import com.mtn.financerecommendation.constants.Messages;
-import com.mtn.financerecommendation.dto.AccountRequestDto;
-import com.mtn.financerecommendation.dto.BaseResponseEntity;
+import com.mtn.financerecommendation.model.dto.AccountRequestDto;
+import com.mtn.financerecommendation.model.dto.BaseResponseEntity;
 import com.mtn.financerecommendation.model.Account;
 import com.mtn.financerecommendation.service.impl.AccountServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,6 @@ public class AccountController {
 
     @PostMapping(value = "/assign-account")
     public ResponseEntity<BaseResponseEntity<Object>> assignClientAccount(@RequestBody AccountRequestDto accountRequestDto) {
-
         Account account = accountService.addClientAccount(accountRequestDto);
         return ResponseEntity.ok().body(BaseResponseEntity.builder()
                 .message(Messages.ACCOUNT_ASSIGNMENT_COMPLETED + accountRequestDto.getClientId())

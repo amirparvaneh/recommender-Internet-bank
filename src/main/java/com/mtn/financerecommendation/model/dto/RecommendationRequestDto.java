@@ -1,4 +1,4 @@
-package com.mtn.financerecommendation.dto;
+package com.mtn.financerecommendation.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

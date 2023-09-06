@@ -3,9 +3,9 @@ package com.mtn.financerecommendation.controller;
 
 import com.mtn.financerecommendation.ApiVersion;
 import com.mtn.financerecommendation.constants.Messages;
-import com.mtn.financerecommendation.dto.BaseResponseEntity;
-import com.mtn.financerecommendation.dto.ClientAllResponseDto;
-import com.mtn.financerecommendation.dto.ClientRequestDto;
+import com.mtn.financerecommendation.model.dto.BaseResponseEntity;
+import com.mtn.financerecommendation.model.dto.ClientAllResponseDto;
+import com.mtn.financerecommendation.model.dto.ClientRequestDto;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.service.impl.ClientServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +29,7 @@ public class ClientController {
         Client client = mapper.map(clientRequestDto, Client.class);
         clientService.save(client);
         return ResponseEntity.ok().body(BaseResponseEntity.builder()
-                        .message(Messages.ITEM_SAVED_SUCCESSFUL)
+                        .message(Messages.ITEM_SAVED_SUCCESSFUL + clientRequestDto.getUsername())
                 .build());
     }
 

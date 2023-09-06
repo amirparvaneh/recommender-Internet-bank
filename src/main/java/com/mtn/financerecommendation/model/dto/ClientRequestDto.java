@@ -1,4 +1,4 @@
-package com.mtn.financerecommendation.dto;
+package com.mtn.financerecommendation.model.dto;
 
 import com.mtn.financerecommendation.constants.ErrorMessage;
 import jakarta.validation.constraints.NotNull;
@@ -18,10 +18,6 @@ public class ClientRequestDto implements Serializable {
 
     @NotNull(message = ErrorMessage.Error_for_create_client)
     private String username;
-    @NotNull(message = ErrorMessage.Error_for_create_client)
-    private Double amount;
-    @NotNull(message = ErrorMessage.Error_for_create_client)
-    private Double interestRate;
     private Date createdAt;
     private Date updatedAt;
 }

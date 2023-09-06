@@ -2,8 +2,8 @@ package com.mtn.financerecommendation.controller;
 
 
 import com.mtn.financerecommendation.ApiVersion;
-import com.mtn.financerecommendation.dto.RecommendationRequestDto;
-import com.mtn.financerecommendation.dto.RecommendationResponseDto;
+import com.mtn.financerecommendation.model.dto.RecommendationRequestDto;
+import com.mtn.financerecommendation.model.dto.RecommendationResponseDto;
 import com.mtn.financerecommendation.model.Account;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.service.impl.AccountServiceImpl;

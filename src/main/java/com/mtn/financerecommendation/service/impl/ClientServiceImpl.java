@@ -1,7 +1,7 @@
 package com.mtn.financerecommendation.service.impl;
 
 import com.mtn.financerecommendation.constants.ErrorMessage;
-import com.mtn.financerecommendation.dto.ClientAllResponseDto;
+import com.mtn.financerecommendation.model.dto.ClientAllResponseDto;
 import com.mtn.financerecommendation.exception.EntityNotFoundException;
 import com.mtn.financerecommendation.model.Client;
 import com.mtn.financerecommendation.repository.ClientRepo;
@@ -34,7 +34,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client find(Long clientId) {
         return clientRepo.findById(clientId).orElseThrow(() ->
-                new EntityNotFoundException(ErrorMessage.Error_Not_Exist_Client + clientId));
+                new EntityNotFoundException(ErrorMessage.Error_Not_Exist_ITEM + clientId));
     }
 
     @Override

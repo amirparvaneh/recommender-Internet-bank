@@ -2,7 +2,7 @@ package com.mtn.financerecommendation.controller;
 
 
 import com.mtn.financerecommendation.ApiVersion;
-import com.mtn.financerecommendation.dto.InterestRequestDto;
+import com.mtn.financerecommendation.model.dto.InterestRequestDto;
 import com.mtn.financerecommendation.model.InterestCategory;
 import com.mtn.financerecommendation.service.impl.InterestServiceImpl;
 import lombok.RequiredArgsConstructor;
