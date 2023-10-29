@@ -26,4 +26,13 @@ public class AccountController {
                 .result(account)
                 .build());
     }
+
+    @GetMapping(value = "/{accountId}")
+    public ResponseEntity<BaseResponseEntity<Object>> getAccountById(@PathVariable Long accountId) {
+        Account account = accountService.find(accountId);
+        return ResponseEntity.ok().body(BaseResponseEntity.builder()
+                .message(Messages.Account_found_with_id + accountId)
+                .result(account)
+                .build());
+    }
 }
